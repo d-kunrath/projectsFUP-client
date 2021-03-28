@@ -10,13 +10,43 @@ import Login from "./main/Login";
 import Navbar from "./components/Navbar";
 
 class App extends Component {
+  state = {
+    loggedInUser: false,
+    token: "",
+  };
+
+  handleLogin = (value) => {
+    this.setState({
+      loggedInUser: value,
+    });
+  };
+
+  componentDidMount = async () => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      this.setState({
+        token: storedToken,
+      });
+    }
+  };
+
   render = () => {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar
+          loggedInUser={this.state.loggedInUser}
+          handleLogin={this.handleLogin}
+        />
         <Switch>
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <Login {...props} handleLogin={this.handleLogin} />
+            )}
+          />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/login" component={Login} />
+          {}
         </Switch>
       </div>
     );
