@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 // api connection
-import api from "../utils/api";
+import api from "../utils/api.utils";
 
 class Signup extends Component {
   state = {

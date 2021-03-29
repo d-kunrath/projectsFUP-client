@@ -1,10 +1,12 @@
 // import "./App.css";
 import { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 // import main components
+import Home from "./main/Home";
 import Signup from "./main/Signup";
 import Login from "./main/Login";
+import Students from "./main/Students";
 
 // import other components
 import Navbar from "./components/Navbar";
@@ -38,6 +40,7 @@ class App extends Component {
           handleLogin={this.handleLogin}
         />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route
             exact
             path="/login"
@@ -46,7 +49,11 @@ class App extends Component {
             )}
           />
           <Route exact path="/signup" component={Signup} />
-          {}
+          {this.state.loggedInUser ? (
+            <Route path="/students" component={Students} />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Switch>
       </div>
     );

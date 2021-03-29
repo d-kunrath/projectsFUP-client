@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 // api connection
-import api from "../utils/api";
+import api from "../utils/api.utils";
 
 class Login extends Component {
   state = {
@@ -29,7 +29,7 @@ class Login extends Component {
     try {
       await api.login(this.state);
       this.props.handleLogin(true);
-      this.props.history.push("/students");
+      this.props.history.push("/projects");
     } catch (error) {
       console.error(error);
       this.setState({

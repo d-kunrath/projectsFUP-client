@@ -36,7 +36,7 @@ class Api {
       const { token } = data;
       localStorage.setItem("token", token);
     } catch (error) {
-      throw new Error("Login error");
+      throw new Error(error);
     }
   };
 
@@ -44,22 +44,36 @@ class Api {
     try {
       await this.api.post("/auth/signup", payload);
     } catch (error) {
-      throw new Error();
+      throw new Error("Signup error");
     }
   };
 
-  // async getAll = () => {
+  getStudents = async () => {
+    try {
+      const students = await this.api.get("/students/list");
+      return students.data;
+    } catch (error) {
+      throw new Error("Cound not get students");
+    }
+  };
 
-  // }
+  createStudent = async (payload) => {
+    try {
+      const newStudent = await this.api.post("/students", payload);
+      return newStudent.data;
+    } catch (error) {
+      throw new Error("Cound not create student");
+    }
+  };
 
-  // async getById = () => {
-
-  // }
-
-  // async update = (id, payload) => {
-  //   const updated = await this.api.put(`/${id}`, payload);
-  //   return updated;
-  // }
+  editStudent = async (id, payload) => {
+    try {
+      const updatedStudent = await this.api.put(`/students/${id}`, payload);
+      return updatedStudent.data;
+    } catch (error) {
+      throw new Error("Could not edit student");
+    }
+  };
 }
 
 export default new Api();
