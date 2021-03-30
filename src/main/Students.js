@@ -89,11 +89,12 @@ class Students extends Component {
               <AddIcon />
             </Button>
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <List>
               {this.state.students.map((student) => {
                 return (
                   <StudentCard
+                    key={student._id}
                     {...student}
                     loadStudentList={this.loadStudentList}
                   />

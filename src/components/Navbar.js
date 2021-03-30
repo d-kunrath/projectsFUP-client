@@ -5,6 +5,7 @@ import { NavLink, Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
 
 // material ui styling
 import { withStyles } from "@material-ui/core/styles";
@@ -70,17 +71,19 @@ class Navbar extends Component {
                 >
                   Projects
                 </NavLink>
-                <button
+                <Button
                   onClick={() => this.props.handleLogin(false)}
                   className={classes.btn}
                   style={{
-                    backgroundColor: "inherit",
+                    textTransform: "none",
                     fontFamily: "inherit",
                     fontSize: "inherit",
+                    fontWeight: "inherit",
+                    padding: "inherit",
                   }}
                 >
                   Logout
-                </button>
+                </Button>
               </div>
             ) : (
               <div

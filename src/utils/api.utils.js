@@ -25,7 +25,7 @@ class Api {
       (response) => response,
       (error) => {
         localStorage.removeItem("token");
-        window.location = "/login";
+        // window.location = "/login";
       }
     );
   }
@@ -72,6 +72,70 @@ class Api {
       return updatedStudent.data;
     } catch (error) {
       throw new Error("Could not edit student");
+    }
+  };
+
+  getProjects = async () => {
+    try {
+      const projects = await this.api.get("/projects/list");
+      return projects.data;
+    } catch (error) {
+      throw new Error("Could not get projects");
+    }
+  };
+
+  queryProject = async (query) => {
+    try {
+      const projects = await this.api.get(`/projects/list/?title=${query}`);
+      return projects.data;
+    } catch (error) {
+      throw new Error("Could not query project");
+    }
+  };
+
+  createProject = async (payload) => {
+    try {
+      const project = await this.api.post("/projects", payload);
+      return project.data;
+    } catch (error) {
+      throw new Error("Could not create project");
+    }
+  };
+
+  getOneProject = async (id) => {
+    try {
+      const project = await this.api.get(`/projects/${id}`);
+      return project.data;
+    } catch (error) {
+      throw new Error("Could not find project");
+    }
+  };
+
+  editProject = async (id, payload) => {
+    try {
+      const project = await this.api.put(`/projects/${id}`, payload);
+      return project.data;
+    } catch (error) {
+      throw new Error("Could not edit project");
+    }
+  };
+
+  addStudentToProject = async (id, studentId) => {
+    try {
+      const project = await this.api.post(`/projects/add-student/${id}`, {
+        studentId,
+      });
+      return project.data;
+    } catch (error) {
+      throw new Error("Could not add student to project");
+    }
+  };
+
+  deleteProject = async (id) => {
+    try {
+      await this.api.delete(`/projects/${id}`);
+    } catch (error) {
+      throw new Error("Could not delete project");
     }
   };
 }

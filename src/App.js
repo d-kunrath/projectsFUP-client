@@ -7,9 +7,11 @@ import Home from "./main/Home";
 import Signup from "./main/Signup";
 import Login from "./main/Login";
 import Students from "./main/Students";
+import Projects from "./main/Projects";
 
 // import other components
 import Navbar from "./components/Navbar";
+import NewProject from "./components/NewProject";
 
 class App extends Component {
   state = {
@@ -49,11 +51,16 @@ class App extends Component {
             )}
           />
           <Route exact path="/signup" component={Signup} />
-          {this.state.loggedInUser ? (
+          {this.state.loggedInUser && (
             <Route path="/students" component={Students} />
-          ) : (
-            <Redirect to="/login" />
           )}
+          {this.state.loggedInUser && (
+            <Route path="/projects" component={Projects} />
+          )}
+          {this.state.loggedInUser && (
+            <Route path="/new-project" component={NewProject} />
+          )}
+          <Redirect to="/" />
         </Switch>
       </div>
     );

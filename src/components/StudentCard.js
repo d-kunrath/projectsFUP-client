@@ -73,10 +73,4 @@ class StudentCard extends Component {
   };
 }
 
-const styles = {
-  title: {
-    margin: "2rem 0 1rem",
-  },
-};
-
 export default StudentCard;
