@@ -56,7 +56,7 @@ class NewProject extends Component {
         students: [],
         selectStudent: "",
       });
-      // this.props.history.push("/projects");
+      this.props.history.push("/projects");
     } catch (error) {
       console.error(error);
     }

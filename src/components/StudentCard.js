@@ -45,7 +45,7 @@ class StudentCard extends Component {
 
   render = () => {
     const { name, projects } = this.props;
-    const projectsText = projects.map((project) => project.name).join(" ");
+    const projectsText = projects.map((project) => project.name).join(", ");
     return (
       <ListItem>
         {this.state.edit ? (

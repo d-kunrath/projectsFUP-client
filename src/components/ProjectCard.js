@@ -26,7 +26,7 @@ class ProjectCard extends Component {
 
   render = () => {
     const { title, students } = this.props;
-    const studentsText = students.map((student) => student.name).join(" ");
+    const studentsText = students.map((student) => student.name).join(", ");
     return (
       <ListItem>
         <Link href={`/projects/${this.props._id}`}>
