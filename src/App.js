@@ -29,6 +29,7 @@ class App extends Component {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       this.setState({
+        loggedInUser: true,
         token: storedToken,
       });
     }
