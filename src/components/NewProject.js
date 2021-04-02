@@ -107,7 +107,7 @@ class NewProject extends Component {
   render = () => {
     return (
       <Container component="main" maxWidth="sm" style={styles.paper}>
-        <form style={styles.form}>
+        <form style={styles.form} onSubmit={this.handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={8}>
               <TextField
@@ -134,7 +134,7 @@ class NewProject extends Component {
               <List>
                 {this.state.students.map((student) => {
                   return (
-                    <ListItem>
+                    <ListItem key={student._id}>
                       <ListItemText primary={student.name} />
                       <ListItemSecondaryAction>
                         <Button onClick={() => this.removeStudent(student._id)}>
@@ -158,7 +158,9 @@ class NewProject extends Component {
                   <MenuItem value="" disabled></MenuItem>
                   {this.state.studentsList.map((student) => {
                     return (
-                      <MenuItem value={student._id}>{student.name}</MenuItem>
+                      <MenuItem key={student._id} value={student._id}>
+                        {student.name}
+                      </MenuItem>
                     );
                   })}
                 </Select>
@@ -176,7 +178,6 @@ class NewProject extends Component {
             </Grid>
           </Grid>
           <Button
-            onClick={this.handleSubmit}
             variant="contained"
             color="primary"
             style={styles.btn}

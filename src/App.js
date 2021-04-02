@@ -8,6 +8,7 @@ import Signup from "./main/Signup";
 import Login from "./main/Login";
 import Students from "./main/Students";
 import Projects from "./main/Projects";
+import ProjectDetails from "./main/ProjectDetails";
 
 // import other components
 import Navbar from "./components/Navbar";
@@ -60,6 +61,9 @@ class App extends Component {
           )}
           {this.state.loggedInUser && (
             <Route path="/new-project" component={NewProject} />
+          )}
+          {this.state.loggedInUser && (
+            <Route path="/project/:id" component={ProjectDetails} />
           )}
           <Redirect to="/" />
         </Switch>

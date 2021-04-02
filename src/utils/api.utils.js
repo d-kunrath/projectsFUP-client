@@ -25,7 +25,7 @@ class Api {
       (response) => response,
       (error) => {
         localStorage.removeItem("token");
-        // window.location = "/login";
+        window.location = "/login";
       }
     );
   }
@@ -136,6 +136,15 @@ class Api {
       await this.api.delete(`/projects/${id}`);
     } catch (error) {
       throw new Error("Could not delete project");
+    }
+  };
+
+  createFup = async (payload) => {
+    try {
+      const newFup = await this.api.post("/fups", payload);
+      return newFup.data;
+    } catch (error) {
+      throw new Error("Could not create follow up");
     }
   };
 }
