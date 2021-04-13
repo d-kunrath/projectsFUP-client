@@ -181,6 +181,7 @@ class NewProject extends Component {
             variant="contained"
             color="primary"
             style={styles.btn}
+            onClick={this.handleSubmit}
             fullWidth
           >
             add new project
